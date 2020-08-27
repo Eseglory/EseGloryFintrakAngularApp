@@ -1,0 +1,103 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <input type="hidden" name="Id" [value]="service.formData.Id" />
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-white">
+          <i
+            class="fas fa-user-circle"
+            [class.green-icon]="Name.valid"
+            [class.red-icon]="Name.invalid && Name.touched"
+          ></i>
+        </div>
+      </div>
+      <input
+        name="Name"
+        #Name="ngModel"
+        [(ngModel)]="service.formData.Name"
+        class="form-control"
+        placeholder="Account Name"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-white">
+          <i
+            class="far fa-credit-card"
+            [class.green-icon]="AccountNumber.valid"
+            [class.red-icon]="AccountNumber.invalid && AccountNumber.touched"
+          ></i>
+        </div>
+      </div>
+      <input
+        name="AccountNumber"
+        #AccountNumber="ngModel"
+        [(ngModel)]="service.formData.AccountNumber"
+        class="form-control"
+        placeholder="10 Digit Account Number"
+        required
+        maxlength="10"
+        minlength="10"
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-7">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text bg-white">
+            <i
+              class="fas fa-book"
+              [class.green-icon]="Description.valid"
+              [class.red-icon]="Description.invalid && Description.touched"
+            ></i>
+          </div>
+        </div>
+        <input
+          name="Description"
+          #Description="ngModel"
+          [(ngModel)]="service.formData.Description"
+          class="form-control"
+          placeholder="Remark"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-group col-md-5">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text bg-white">
+            <i
+              class="fas fa-dollar-sign"
+              [class.green-icon]="InitialAmount.valid"
+              [class.red-icon]="InitialAmount.invalid && InitialAmount.touched"
+            ></i>
+          </div>
+        </div>
+        <input
+          type="number"
+          name="InitialAmount"
+          #InitialAmount="ngModel"
+          [(ngModel)]="service.formData.InitialAmount"
+          class="form-control"
+          placeholder="InitialAmount"
+          required
+          maxlength="8"
+          minlength="8"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button
+      class="btn btn-success btn-lg btn-block"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      <i class="fas fa-database"></i> Submit
+    </button>
+  </div>
+</form>
